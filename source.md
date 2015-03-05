@@ -21,7 +21,7 @@ H:
 ## SHADERS
 
 Jean Pierre Charalambos
-(mostly adpated from Andres Colubri [presentation](http://visualcomputing.github.io/shaders))
+(currently mostly adpated from Andres Colubri [presentation](http://visualcomputing.github.io/shaders))
 
 H:
 
