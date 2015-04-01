@@ -21,7 +21,7 @@ H:
 ## SHADERS
 
 Andres Gomez and Jean Pierre Charalambos
-(currently mostly adpated from Andres Colubri [presentation](http://visualcomputing.github.io/shaders))
+(currently mostly adpated from Andres Colubri [great presentation](http://visualcomputing.github.io/shaders))
 
 H:
 
@@ -37,17 +37,27 @@ H:
 
 ## Introduction
 
+<section>
+	<iframe width="420" height="345" src="http://www.youtube.com/embed/EpAHIutTE60"></iframe>
+</section>
+
+V:
+
+## Introduction
+
 ### What is a shader?
 
-<li class="fragment">A shader is a program that runs on the GPU (Graphics Processing Unit) and generates the output we see on the 
-screen based on the scene information provided by our application.</li>
-<li class="fragment">In the context of this class, an application is a graphics program</li>
-<li class="fragment">The language of the shaders in Processing is GLSL (OpenGL Shading Language)</li>
+ * A shader is a program that runs on the GPU and generates the output we see on the screen based on the scene information provided by our application
+ * In the context of this class, an application is a graphics program
+ * The language of the shaders in Processing is GLSL (OpenGL Shading Language)
 
 N:
+
 + Graphics program: be it an game engine or a script
 
 V:
+
+## Introduction
 
 What can be done by using shaders?
 
@@ -167,7 +177,7 @@ varying vec3 vertNormal;
 varying vec3 vertLightDir;
 
 void main() {
-  gl_Position = transformMatrix * vertex;  
+  gl_Position = transformMatrix * vertex;
   vertColor = color;
   vertNormal = normalize(normalMatrix * normal);
   vertLightDir = -lightNormal;
@@ -285,7 +295,7 @@ V:
 
 ### Creating image filters
 
-By changing thw way the pixels of a texture are processed in the fragment shader, we can create different image filters. So, we can modify our sample code to add a custom B&W shader:
+By changing the way the pixels of a texture are processed in the fragment shader, we can create different image filters. So, we can modify our sample code to add a custom B&W shader:
 
 ```java
 PImage label;
@@ -473,6 +483,12 @@ V:
 
 <img width="640" src="fig/emboss.png">
 
+N:
+
+1. Each pixel of an image is replaced either by a highlight or a shadow, depending on light/dark boundaries on the original image
+1. The filtered image will represent the rate of color change at each location of the original image
+1. Efecto: estampado en relieve de la imagen original
+
 V:
 
 ### Pixelation shader
@@ -567,7 +583,7 @@ V:
 
 ### Using fragment shaders as screen filters
 
-We saw how we can create various effects by altering the way texels are read and manipulated in the fragment shader. Since the entire image on the screen it is actually an image, we apply any of the effects we saw until now to apply on an arbitrary Processing sketch using the *filter()* function and passing a PShader argument to it.
+We saw how we can create various effects by altering the way texels are read and manipulated in the fragment shader. Since the entire image on the screen is actually an image, we can apply any of the effects we saw until now on an arbitrary Processing sketch using the *filter()* function and passing a PShader argument to it.
 
 V:
 
@@ -966,7 +982,13 @@ H:
 
 ## Lighting
 
-Lighting a 3D scene involves placing one or more light sources in the space, and defining their parameters, such as type (point, spotlight) and color (diffuse, ambient, specular). In the simplest model of lighting, the intensity at each vertex is computed as the dot product between the vertex normal and the direction vector between the vertex and light positions. This model represents a point light source that emits light equally in all directions: 
+Lighting a 3D scene involves placing one or more light sources in the space, and defining their parameters, such as type (point, spotlight) and color (diffuse, ambient, specular).
+
+V:
+
+## Lighting
+
+In the simplest model of lighting, the intensity at each vertex is computed as the dot product between the vertex normal and the direction vector between the vertex and light positions. This model represents a point light source that emits light equally in all directions: 
 
 <img width="360" src="fig/lighting.png">
 
@@ -1047,9 +1069,29 @@ void main() {
 
 V:
 
-In the vertex shader, the ecVertex variable is the position of the input vertex expressed in eye-coordinates, since it is obtained by multiplying vertex by the modelview matrix. Similarly, multiplying the input normal vector by the normalMatrix yields its coordinates in the eye-system. 
+In the vertex shader, the ecVertex variable is the position of the input vertex expressed in eye-coordinates, since it is obtained by multiplying vertex by the modelview matrix. Similarly, multiplying the input normal vector by the normalMatrix yields its coordinates in the eye-system:
 
-Once all the vectors are expressed in the same coordinate system, they can be used to calculate the intensity of the incident light at the current vector. From the formula used in the shader, the intensity is directly proportional to the angle between the normal and the vector between the vertex and the light source.
+```glsl
+void main() {
+  gl_Position = transformMatrix * position;    
+  vec3 ecVertex = vec3(modelviewMatrix * position);  
+  vec3 ecNormal = normalize(normalMatrix * normal);
+  ...       
+}
+```
+
+V:
+
+Once all the vectors are expressed in the same coordinate system, they can be used to calculate the intensity of the incident light at the current vector. From the formula used in the shader, the intensity is directly proportional to the angle between the normal and the vector between the vertex and the light source:
+
+```glsl
+void main() {
+  ...
+  vec3 direction = normalize(lightPosition.xyz - ecVertex);    
+  float intensity = max(0.0, dot(direction, ecNormal));
+  vertColor = vec4(intensity, intensity, intensity, 1) * color;             
+}
+```
 
 V:
 
