@@ -20,7 +20,7 @@ H:
 
 ## SHADERS
 
-Jean Pierre Charalambos
+Andres Gomez and Jean Pierre Charalambos
 (currently mostly adpated from Andres Colubri [presentation](http://visualcomputing.github.io/shaders))
 
 H:
@@ -31,6 +31,7 @@ H:
 2. The graphics pipeline <!-- .element: class="fragment" data-fragment-index="2" -->
 3. Fragment shaders  <!-- .element: class="fragment" data-fragment-index="3" -->
 4. Vertex lighting <!-- .element: class="fragment" data-fragment-index="4" -->
+5. ShaderDB<!-- .element: class="fragment" data-fragment-index="5" -->
 
 H:
 
@@ -90,7 +91,7 @@ H:
 
 ### The graphics pipeline
 
-<img width="800" src="fig/Processing-pipeline.png">
+<img width="800" src="fig/pipeline.png">
 
 V:
 
