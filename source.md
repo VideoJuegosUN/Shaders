@@ -28,14 +28,19 @@ H:
 ## Contents
 
 1. Introduction <!-- .element: class="fragment" data-fragment-index="1"-->
-2. The graphics pipeline <!-- .element: class="fragment" data-fragment-index="2" -->
-3. Fragment shaders  <!-- .element: class="fragment" data-fragment-index="3" -->
-4. Vertex lighting <!-- .element: class="fragment" data-fragment-index="4" -->
-5. ShaderDB<!-- .element: class="fragment" data-fragment-index="5" -->
+  1. What is a shader? <!-- .element: class="fragment" data-fragment-index="2" -->
+  2. The graphics pipeline <!-- .element: class="fragment" data-fragment-index="3" -->
+  3. Fragment shaders  <!-- .element: class="fragment" data-fragment-index="4" -->
+  4. Vertex lighting <!-- .element: class="fragment" data-fragment-index="5" -->
+5. ShaderBase<!-- .element: class="fragment" data-fragment-index="6" -->
 
 H:
 
-## Introduction
+# Part 1 Introduction
+
+H:
+
+## Keys in future game development
 
 <section>
 	<iframe width="420" height="345" src="http://www.youtube.com/embed/EpAHIutTE60"></iframe>
@@ -43,13 +48,11 @@ H:
 
 V:
 
-## Introduction
-
-### What is a shader?
+## What is a shader?
 
  * A shader is a program that runs on the GPU and generates the output we see on the screen based on the scene information provided by our application
  * In the context of this class, an application is a graphics program
- * The language of the shaders in Processing is GLSL (OpenGL Shading Language)
+ * The standard language of shaders is GLSL (OpenGL Shading Language)
 
 N:
 
@@ -57,13 +60,9 @@ N:
 
 V:
 
-## Introduction
+let's see some examples...
 
-What can be done by using shaders?
-
-Let's see some examples:
-
-V:
+V: 
 
 ### Just Cause 2 visualization, by Jim Blackhurst
 
@@ -1217,3 +1216,16 @@ void main() {
 V:
 
 <img width="640" src="fig/texlight.png">
+
+V:
+
+## Conclusions:
+
+* What each one needs to know?
+* The screen writer?
+* The designer
+* The developer
+
+H:
+
+# Part 2 ShaderBase
