@@ -56,7 +56,7 @@ V:
 
 N:
 
-+ Graphics program: be it an game engine or a script
++ Graphics program: be it a game engine or a script
 
 V:
 
