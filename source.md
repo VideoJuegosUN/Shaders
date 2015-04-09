@@ -40,6 +40,8 @@ H:
 	<iframe width="420" height="345" src="http://www.youtube.com/embed/EpAHIutTE60"></iframe>
 </section>
 
+Excerpt from [A Brief History of Graphics](https://www.youtube.com/playlist?list=PLOQZmjD6P2HlOoEVKOPaCFvLnjP865X1f)
+
 V:
 
 ## Introduction
@@ -164,7 +166,25 @@ V:
 ## Basic uses
 ### Image filters: convolution
 
-Pending
+<font size=5>
+<table>
+<tr>
+	<td colspan=2>Edge detection</td>
+
+</tr>
+<tr>
+	<td>
+<img width="200" src="fig/edge.png">
+	</td>
+	<td>
+$ K=\begin{bmatrix} 
+0 & 1 & 0 \cr 
+1 & -4 & 1 \cr 
+0 & 1 & 0 \end{bmatrix} $
+	</td>
+</tr>
+</table>
+</font>
 
 V:
 
@@ -216,7 +236,7 @@ V:
 
 <li class="fragment"> [Toon shading](http://en.wikipedia.org/wiki/Cel_shading) (or cell shading) makes 3-D computer graphics appear to be flat </li>
 <li class="fragment"> It is a type of non-photorealistic rendering </li>
-<li class="fragment"> It uses less shading color instead of a shade gradient or tints and shades </li>
+<li class="fragment"> It uses less shading colors instead of a shade gradient or tints and shades </li>
 <li class="fragment"> Used to mimic the style of a comic book or cartoon </li>
 
 V:
